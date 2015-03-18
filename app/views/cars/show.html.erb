@@ -1,0 +1,16 @@
+<p>
+  <strong>Registration number:</strong>
+  <%= @car.registration_number %>
+</p>
+
+<p>
+  <strong>Model:</strong>
+  <%= @car.model %>
+</p>
+
+<p>
+  <strong>Owner:</strong>
+  <%= @car.owner.full_name %>
+</p>
+
+<%= link_to 'Back to cars', cars_path %>

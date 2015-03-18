@@ -1,0 +1,7 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+test_car:
+  registration_number: dw12345
+  model: honda
+  owner: stefan_puszcza
+

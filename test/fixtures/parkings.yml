@@ -1,0 +1,17 @@
+
+test_parking:
+  places: 25
+  kind: outdoor
+  hour_price: 15.0
+  day_price: 50.0
+  address: krakow
+  owner: stefan_puszcza
+
+private:
+  places: 20
+  kind: private
+  hour_price: 15.0
+  day_price: 50.0
+  address: krakow
+  owner: stefan_puszcza
+

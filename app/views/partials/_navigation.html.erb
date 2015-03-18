@@ -1,0 +1,20 @@
+<header class="navbar navbar-default">
+  <div class="container">
+    <nav>
+      <ul class="nav nav-tabs">
+        <% if session[:user_id] %>
+          <img src="http://cdn.flaticon.com/png/256/35020.png"/>
+          <li role="presentation"><%= link_to 'Parkings', parkings_path %></li>
+          <li class="log" role="presentation"><%= link_to 'Log out', session_path(session), method: 'delete' %></li>
+          <span class="log"> <%= "Hello, #{current_person.full_name}" %></span>
+          <li role="presentation"><%= link_to 'Cars', cars_path %></li>
+          <li role="presentation"><%= link_to 'Place rents', place_rents_path %></li>
+        <% else %>
+          <li class="log" role="presentation"><%= link_to 'Log in', new_session_path, action:'new' %></li>
+          <img src="http://cdn.flaticon.com/png/256/35020.png"/>
+          <li role="presentation"><%= link_to 'Parkings', parkings_path %></li>
+        <% end %>
+      </ul>
+    </nav>
+  </div>
+</header>

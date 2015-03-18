@@ -1,0 +1,60 @@
+
+<h3>Parkings</h3>
+
+<%= link_to 'New parking', action: 'new' %>
+
+<table>
+  <tr>
+    <th>City</th>
+    <th>Street</th>
+    <th>Zipcode</th>
+    <th>Places</th>
+    <th>Hour price</th>
+    <th>Day price</th>
+    <th>Actions</th>
+  </tr>
+
+  <% @parkings.each do |parking| %>
+  <tr class="parking-<%= parking.id %>">
+    <td><%= parking.address.try(:city) %></td>
+    <td><%= parking.address.try(:street) %></td>
+    <td><%= parking.address.try(:zip_code) %></td>
+    <td><%= parking.places %></td>
+    <td><%= parking.hour_price %></td>
+    <td><%= parking.day_price %></td>
+    <td><%= link_to 'Show', parking %>
+        <%= link_to 'Edit', edit_parking_path(parking) %>
+        <%= link_to('Destroy', parking, data: { confirm: 'Are you sure?' },
+        method: 'delete') %></td>
+    <td><%= link_to 'Rent a place', new_parking_place_rent_path(parking) %></td>
+  </tr>
+  <% end %>
+</table>
+    <% if flash[:notice] %>
+      <div id="notice"><%= flash[:notice] %></div>
+    <% end %>
+
+<h3> Search for parkings </h3>
+<div class="search-form">
+<%= form_tag(parkings_path, method: "get") do %>
+
+  <%= label_tag(:private_parking, "Private parking?") %>
+  <%= check_box_tag(:private_parking, nil, checked = params[:private_parking].present?) %>
+
+  <%= label_tag(:public_parking, "Public parking?") %>
+  <%= check_box_tag(:public_parking, nil, checked = params[:public_parking].present?) %>
+
+  <p><%= label_tag(:bla_bla, "Your range of day price:") %></p>
+  <%= text_field_tag(:day_price_min, params[:day_price_min]) %>
+  <%= text_field_tag(:day_price_max, params[:day_price_max]) %>
+
+  <p><%= label_tag(:q, "Your range of hour price:") %></p>
+  <%= text_field_tag(:hour_price_min, params[:hour_price_min]) %>
+  <%= text_field_tag(:hour_price_max, params[:hour_price_max]) %>
+
+  <p><%= label_tag(:city, "City:") %></p>
+  <%= text_field_tag(:city, params[:city]) %>
+
+  <p><%= submit_tag("Search") %></p>
+<% end %>
+</div>

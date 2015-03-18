@@ -1,0 +1,51 @@
+Running `rake db:migrate` attached to terminal... up, run.5895
+  [1m[36mActiveRecord::SchemaMigration Load (1.7ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Migrating to ChangeParkingFileTypes (20150225113203)
+  [1m[35m (1.3ms)[0m  BEGIN
+== 20150225113203 ChangeParkingFileTypes: migrating ===========================
+-- change_column(:parkings, :places, :integer)
+  [1m[36m (2.8ms)[0m  [1mALTER TABLE "parkings" ALTER COLUMN "places" TYPE integer[0m
+PG::DatatypeMismatch: ERROR:  column "places" cannot be cast automatically to type integer
+HINT:  Specify a USING expression to perform the conversion.
+: ALTER TABLE "parkings" ALTER COLUMN "places" TYPE integer
+  [1m[35m (1.2ms)[0m  ROLLBACK
+rake aborted!
+StandardError: An error has occurred, this and all later migrations canceled:
+
+PG::DatatypeMismatch: ERROR:  column "places" cannot be cast automatically to type integer
+HINT:  Specify a USING expression to perform the conversion.
+: ALTER TABLE "parkings" ALTER COLUMN "places" TYPE integer/app/vendor/bundle/ruby/2.0.0/gems/activerecord-4.2.0/lib/active_record/connection_adapters/postgresql/database_statements.rb:155:in `async_exec'
+/app/vendor/bundle/ruby/2.0.0/gems/activerecord-4.2.0/lib/active_record/connection_adapters/postgresql/database_statements.rb:155:in `block in execute'
+/app/vendor/bundle/ruby/2.0.0/gems/activerecord-4.2.0/lib/active_record/connection_adapters/abstract_adapter.rb:466:in `block in log'
+/app/vendor/bundle/ruby/2.0.0/gems/activesupport-4.2.0/lib/active_support/notifications/instrumenter.rb:20:in `instrument'
+/app/vendor/bundle/ruby/2.0.0/gems/activerecord-4.2.0/lib/active_record/connection_adapters/abstract_adapter.rb:460:in `log'
+/app/vendor/bundle/ruby/2.0.0/gems/activerecord-4.2.0/lib/active_record/connection_adapters/postgresql/database_statements.rb:154:in `execute'
+/app/vendor/bundle/ruby/2.0.0/gems/activerecord-4.2.0/lib/active_record/connection_adapters/postgresql/schema_statements.rb:439:in `change_column'
+/app/vendor/bundle/ruby/2.0.0/gems/activerecord-4.2.0/lib/active_record/migration.rb:662:in `block in method_missing'
+/app/vendor/bundle/ruby/2.0.0/gems/activerecord-4.2.0/lib/active_record/migration.rb:632:in `block in say_with_time'
+/app/vendor/bundle/ruby/2.0.0/gems/activerecord-4.2.0/lib/active_record/migration.rb:632:in `say_with_time'
+/app/vendor/bundle/ruby/2.0.0/gems/activerecord-4.2.0/lib/active_record/migration.rb:652:in `method_missing'
+/app/db/migrate/20150225113203_change_parking_file_types.rb:3:in `change'
+/app/vendor/bundle/ruby/2.0.0/gems/activerecord-4.2.0/lib/active_record/migration.rb:606:in `exec_migration'
+/app/vendor/bundle/ruby/2.0.0/gems/activerecord-4.2.0/lib/active_record/migration.rb:590:in `block (2 levels) in migrate'
+/app/vendor/bundle/ruby/2.0.0/gems/activerecord-4.2.0/lib/active_record/migration.rb:589:in `block in migrate'
+/app/vendor/bundle/ruby/2.0.0/gems/activerecord-4.2.0/lib/active_record/connection_adapters/abstract/connection_pool.rb:292:in `with_connection'
+/app/vendor/bundle/ruby/2.0.0/gems/activerecord-4.2.0/lib/active_record/migration.rb:588:in `migrate'
+/app/vendor/bundle/ruby/2.0.0/gems/activerecord-4.2.0/lib/active_record/migration.rb:765:in `migrate'
+/app/vendor/bundle/ruby/2.0.0/gems/activerecord-4.2.0/lib/active_record/migration.rb:995:in `block in execute_migration_in_transaction'
+/app/vendor/bundle/ruby/2.0.0/gems/activerecord-4.2.0/lib/active_record/migration.rb:1041:in `block in ddl_transaction'
+/app/vendor/bundle/ruby/2.0.0/gems/activerecord-4.2.0/lib/active_record/connection_adapters/abstract/database_statements.rb:213:in `block in transaction'
+/app/vendor/bundle/ruby/2.0.0/gems/activerecord-4.2.0/lib/active_record/connection_adapters/abstract/transaction.rb:188:in `within_new_transaction'
+/app/vendor/bundle/ruby/2.0.0/gems/activerecord-4.2.0/lib/active_record/connection_adapters/abstract/database_statements.rb:213:in `transaction'
+/app/vendor/bundle/ruby/2.0.0/gems/activerecord-4.2.0/lib/active_record/transactions.rb:220:in `transaction'
+/app/vendor/bundle/ruby/2.0.0/gems/activerecord-4.2.0/lib/active_record/migration.rb:1041:in `ddl_transaction'
+/app/vendor/bundle/ruby/2.0.0/gems/activerecord-4.2.0/lib/active_record/migration.rb:994:in `execute_migration_in_transaction'
+/app/vendor/bundle/ruby/2.0.0/gems/activerecord-4.2.0/lib/active_record/migration.rb:956:in `block in migrate'
+/app/vendor/bundle/ruby/2.0.0/gems/activerecord-4.2.0/lib/active_record/migration.rb:952:in `each'
+/app/vendor/bundle/ruby/2.0.0/gems/activerecord-4.2.0/lib/active_record/migration.rb:952:in `migrate'
+/app/vendor/bundle/ruby/2.0.0/gems/activerecord-4.2.0/lib/active_record/migration.rb:820:in `up'
+/app/vendor/bundle/ruby/2.0.0/gems/activerecord-4.2.0/lib/active_record/migration.rb:798:in `migrate'
+/app/vendor/bundle/ruby/2.0.0/gems/activerecord-4.2.0/lib/active_record/tasks/database_tasks.rb:137:in `migrate'
+/app/vendor/bundle/ruby/2.0.0/gems/activerecord-4.2.0/lib/active_record/railties/databases.rake:44:in `block (2 levels) in <top (required)>'
+Tasks: TOP => db:migrate
+(See full trace by running task with --trace)

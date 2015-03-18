@@ -1,0 +1,29 @@
+<% if @parking.address.present? %>
+<p>
+  <strong>City:</strong>
+  <%= @parking.address.city %>
+
+  <strong>Street:</strong>
+  <%= @parking.address.street %>
+
+  <strong>Zipcode:</strong>
+  <%= @parking.address.zip_code %>
+</p>
+<% end %>
+
+<p>
+  <strong>Places:</strong>
+  <%= @parking.places %>
+</p>
+
+<p>
+  <strong>Hour price:</strong>
+  <%= @parking.hour_price %>
+</p>
+
+<p>
+  <strong>Day price:</strong>
+  <%= @parking.day_price %>
+</p>
+
+<%= link_to 'Back to parkings', parkings_path %>

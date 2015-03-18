@@ -1,0 +1,9 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+test_place_rent:
+  starts_at: 2015-02-25 12:29:32
+  ends_at: 2015-02-25 12:29:32
+  price: 9.99
+  parking: test_parking
+  car: test_car
+

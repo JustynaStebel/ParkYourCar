@@ -1,0 +1,5 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+stefan_puszcza:
+  first_name: Stefan
+  last_name: Puszcza

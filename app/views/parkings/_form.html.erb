@@ -1,0 +1,44 @@
+<div class="parking">
+<%= form_for @parking do |f| %>
+  <% if @parking.errors.any? %>
+    <div class="error_explanation">
+      <h2>
+        <%= pluralize(@parking.errors.count, "error") %> prohibited
+        this parking from being saved:
+      </h2>
+      <ul>
+        <% @parking.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <%= f.fields_for :address do |address_fields| %>
+
+    <%= address_fields.label :city %>
+    <%= address_fields.text_field :city %>
+
+    <%= address_fields.label :street %>
+    <%= address_fields.text_field :street %>
+
+    <%= address_fields.label :zip_code %>
+    <%= address_fields.text_field :zip_code %>
+  <% end %>
+
+  <p><%= f.label :kind %></p>
+  <%= f.select :kind, ['Choose...'] + Parking::KINDS %>
+
+  <p><%= f.label :places %></p>
+  <%= f.text_field :places %>
+
+  <p><%= f.label :hour_price %></p>
+  <%= f.text_field :hour_price %>
+
+  <p><%= f.label :day_price %></p>
+  <%= f.text_field :day_price %>
+
+  <p><%= f.submit %></p>
+<% end %>
+</div>
+<%= link_to 'Back to parkings', parkings_path %>

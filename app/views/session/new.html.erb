@@ -1,0 +1,13 @@
+<div class="login">
+<%= form_tag(action: 'create') do %>
+
+  <%= label_tag(:email, "Email address") %>
+  <%= text_field_tag(:email) %>
+
+  <%= label_tag(:password, "Password") %>
+  <%= password_field_tag(:password) %>
+
+  <p><%= submit_tag value="Log in" %></p>
+
+  <% end %>
+</div>

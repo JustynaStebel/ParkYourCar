@@ -1,0 +1,24 @@
+<h1>Cars</h1>
+
+<%= link_to 'New car', action: 'new' %>
+<% if current_person %>
+  <table>
+    <tr>
+      <th>Registration number</th>
+      <th>Model</th>
+      <th>Owner</th>
+    </tr>
+
+    <% @cars.each do |car| %>
+    <tr>
+      <td><%= car.registration_number %></td>
+      <td><%= car.model %></td>
+      <td><%= car.owner.full_name %></td>
+      <td><%= link_to 'show', car %>
+          <%= link_to 'edit', edit_car_path(car) %>
+          <%= link_to('destroy', car, data: { confirm: 'Are you sure?' },
+          method: 'delete') %></td>
+    </tr>
+    <% end %>
+  </table>
+<% end %>
